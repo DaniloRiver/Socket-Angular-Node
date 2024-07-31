@@ -6,14 +6,16 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 
 
-const server = new Server();
+const server = Server.instance;
 
 //Body parser(antes de las rutas)
 server.app.use( bodyParser.urlencoded({extended:true}));
 server.app.use( bodyParser.json());
 
 //CORS
-server.app.use( cors({ origin: true, credentials: true}));
+server.app.use( cors({ origin: 'http://localhost:4200', credentials: true}));
+
+
 
 //Rutas de servicio
 server.app.use('/', router);
